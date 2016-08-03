@@ -95,14 +95,38 @@ public class Odometer {
 		return output;
 	}
 	
-	public static ArrayList<Integer> getLargestNum(Integer numDigit){
+	public static ArrayList<Integer> getLargestNum(ArrayList<Integer> num){
+		ArrayList<Integer> largestNum = new ArrayList<>();
+		int MAXDIGIT=9;
+		int counter=MAXDIGIT;
+		for(int i=num.size()-1;i>=0;i--) {
+			if(num.get(i)!=0) {
+				largestNum.add(counter);
+				counter--;
+			} else
+			{
+				
+				largestNum.add(0);
+			}
+		}
+		return largestNum; 
 		
-		return null;
 	}
 	
-	public static ArrayList<Integer> getSmallestNum(Integer numDigit){
-		
-		return null;
+	public static ArrayList<Integer> getSmallestNum(ArrayList<Integer> num){
+		ArrayList<Integer> smallestNum = new ArrayList<>();
+		int LEASTDIGIT=1;
+		int counter=LEASTDIGIT;
+		for(int i=0;i<num.size();i++) {
+			if(num.get(i)!=0) {
+				smallestNum.add(counter);
+				counter++;
+			} else
+			{
+				smallestNum.add(0);
+			}
+		}
+		return smallestNum;
 	}
 	
 	public static boolean isValidOdoNumber(ArrayList<Integer> numList) {
