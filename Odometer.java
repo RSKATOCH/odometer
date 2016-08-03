@@ -54,12 +54,21 @@ public class Odometer {
 	
 	public static ArrayList<Integer> convertToArrayList(int num){
 		
-		return null;
+		ArrayList<Integer> outList= new ArrayList<>();
+		String numString = new Integer(num).toString();
+		for(int i=0;i<numString.length();i++) {
+			outList.add(Integer.parseInt(""+numString.charAt(i)));
+		}
+		return outList;
 	}
 	
 	public static Integer convertToNum(ArrayList<Integer> num){
 		
-		return null;
+		int outNum=0;
+		for(int i=0;i<num.size();i++) {
+			outNum=outNum*10+num.get(i);
+		}
+		return outNum;
 	}
 
 }
