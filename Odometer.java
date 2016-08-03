@@ -5,6 +5,23 @@ public class Odometer {
 	
 	public static ArrayList<Integer> getNextReading(ArrayList<Integer> num){
 	
+			if(isValidOdoNumber(num)){
+			int digit = 9;
+			for(int i = num.size()-1; i>=0 ; i--){
+				if(num.get(i)==digit&&digit!=0){
+					digit--;
+				}
+				else{
+					num.set(i, num.get(i)+1);
+					int newDigit = num.get(i)+1;
+					for(int j =i+1;j<num.size();j++){
+						num.set(i, ++newDigit);
+					}
+					i=-1;
+				}
+			}
+			return num;
+		}
 		return null;
 	}
 	
