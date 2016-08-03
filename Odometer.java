@@ -77,14 +77,22 @@ public class Odometer {
 		
 	}
 	
-	public static ArrayList<Integer> getNextNthReading(ArrayList<Integer> num){
+	public static ArrayList<Integer> getNextNthReading(ArrayList<Integer> num, int N){
 		
-		return null;
+		ArrayList<Integer> output=getNextReading(num);
+		for(int i=1;i<N;i++) {
+			output=getNextReading(output);
+		}
+		return output;
 	}
 	
-	public static ArrayList<Integer> getPrevNthReading(ArrayList<Integer> num){
+	public static ArrayList<Integer> getPrevNthReading(ArrayList<Integer> num, int N){
 		
-		return null;
+		ArrayList<Integer> output=getNextReading(num);
+		for(int i=1;i<N;i++) {
+			output=getPrevReading(output);
+		}
+		return output;
 	}
 	
 	public static ArrayList<Integer> getLargestNum(Integer numDigit){
