@@ -69,15 +69,21 @@ public class Odometer {
         return true;
     }
 	
-	public static ArrayList<Integer> convertToArrayList(int num){
+	public static ArrayList<Integer> initOdometer(int maxLength){
+		ArrayList<Integer> odometer = new ArrayList<>();
+		for(int i=0;i<maxLength;i++) {
+			odometer.add(0);
+		}
+		return odometer;
+	}
+	public static ArrayList<Integer> convertToArrayList(int num, int maxdigitslimit){
 		
 		ArrayList<Integer> outList= new ArrayList<>();
-		int MAXLIMITDIGITS = 8;
 		String numString = new Integer(num).toString();
 		for(int i=0;i<numString.length();i++) {
 			outList.add(Integer.parseInt(""+numString.charAt(i)));
 		}
-		return convertToMaxDigitList(outList,MAXLIMITDIGITS);
+		return convertToMaxDigitList(outList,maxdigitslimit);
 	}
 	public static ArrayList<Integer> convertToMaxDigitList(ArrayList<Integer> list, int limit) {
 		ArrayList<Integer> outList = new ArrayList<>();
