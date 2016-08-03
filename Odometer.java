@@ -5,24 +5,27 @@ public class Odometer {
 	
 	public static ArrayList<Integer> getNextReading(ArrayList<Integer> num){
 	
-			if(isValidOdoNumber(num)){
-			int digit = 9;
-			for(int i = num.size()-1; i>=0 ; i--){
-				if(num.get(i)==digit&&digit!=0){
-					digit--;
+			if(! isValidOdoNumber(num)){
+				return null;
+			}
+			
+			int maxDigit = 9;
+			
+			for(int i = num.size()-1; i >= 0 ; --i) {
+			
+				if(num.get(i) == maxDigit && maxDigit != 0) {
+					maxDigit--;
 				}
-				else{
+				else {
 					num.set(i, num.get(i)+1);
 					int newDigit = num.get(i)+1;
-					for(int j =i+1;j<num.size();j++){
-						num.set(i, ++newDigit);
+					for(int j = i+1; j < num.size(); j++) {
+						num.set(j, newDigit++);
 					}
 					i=-1;
 				}
 			}
 			return num;
-		}
-		return null;
 	}
 	
 	public static ArrayList<Integer> getPrevReading(ArrayList<Integer> num){
@@ -30,9 +33,28 @@ public class Odometer {
 		return null;
 	}
 	
-	public static Integer getDistance(ArrayList<Integer> num1, ArrayList<Integer> num2){
+	public static int getDistance(ArrayList<Integer> num1, ArrayList<Integer> num2){
 	
-		return null;
+	
+		int number1 = convertToNum(num1);
+		int number2 = convertToNum(num2);
+		
+		int diff = 0;
+		
+		if(number1 > number2) {
+			int temp = number1;
+			number1 = number2;
+			number2 = number1;
+		}
+		
+		
+		while(number2 - number1 > 0) {		
+			number1 = convertToNum(getNextReading(num1));
+			++diff;		
+		}
+	
+		return diff;
+		
 	}
 	
 	public static ArrayList<Integer> getNextNthReading(ArrayList<Integer> num){
