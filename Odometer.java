@@ -55,13 +55,23 @@ public class Odometer {
 	public static ArrayList<Integer> convertToArrayList(int num){
 		
 		ArrayList<Integer> outList= new ArrayList<>();
+		int MAXLIMITDIGITS = 8;
 		String numString = new Integer(num).toString();
 		for(int i=0;i<numString.length();i++) {
 			outList.add(Integer.parseInt(""+numString.charAt(i)));
 		}
-		return outList;
+		return convertToMaxDigitList(outList,MAXLIMITDIGITS);
 	}
-	
+	public static ArrayList<Integer> convertToMaxDigitList(ArrayList<Integer> list, int limit) {
+		ArrayList<Integer> outList = new ArrayList<>();
+		for(int i=list.size();i<limit;i++) {
+			outList.add(0);
+		}
+		for(int i=0;i<list.size();i++) {
+			outList.add(list.get(i));
+		}
+		return outList; 
+	}
 	public static Integer convertToNum(ArrayList<Integer> num){
 		
 		int outNum=0;
