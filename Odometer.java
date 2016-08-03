@@ -30,7 +30,27 @@ public class Odometer {
 	
 	public static ArrayList<Integer> getPrevReading(ArrayList<Integer> num){
 		
-		return null;
+			if(!isValidOdoNumber(num)){
+			return null;
+		}
+		int startPtr = 0;
+		for(int i = num.size()-1;num.get(i)!=0; i--){
+			if(num.get(i)-num.get(i-1)>=2){
+				num.set(i, num.get(i)-1);
+			}
+			startPtr = i;
+		}
+		
+		if(num.get(startPtr)==0){
+			int digit  = 9;
+			int endPtr = num.size()-1;
+			while( endPtr != startPtr+2){
+				num.set(endPtr, digit);
+				digit--;
+				endPtr--;
+			}
+		}
+		return num;
 	}
 	
 	public static int getDistance(ArrayList<Integer> num1, ArrayList<Integer> num2){
