@@ -3,12 +3,12 @@ import java.util.ArrayList;
 public class Odometer {
 	
 	
-	public static ArrayList<Integer> getNextReading(){
+	public static ArrayList<Integer> getNextReading(ArrayList<Integer> num){
 	
 		return null;
 	}
 	
-	public static ArrayList<Integer> getPrevReading(){
+	public static ArrayList<Integer> getPrevReading(ArrayList<Integer> num){
 		
 		return null;
 	}
@@ -38,10 +38,19 @@ public class Odometer {
 		return null;
 	}
 	
-	public static boolean isValidOdoNumber(ArrayList<Integer> num){
-		
-		return false;
-	}
+	public static boolean isValidOdoNumber(ArrayList<Integer> numList) {
+        
+        int prev = -1;
+        
+        for(int num: numList) {            
+            if(prev > num) {
+                return false;
+            }            
+            prev = num;            
+        }
+        
+        return true;
+    }
 	
 	public static ArrayList<Integer> convertToArrayList(int num){
 		
